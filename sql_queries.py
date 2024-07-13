@@ -127,7 +127,7 @@ COPY staging_events from '{}'
 CREDENTIALS 'aws_iam_role={}'
 format as json '{}'
 region 'us-west-2'
-""").format(config['S3']['LOG_DATA'],,config['IAM_ROLE']['ARN'], config['S3']['LOG_JSONPATH'])
+""").format(config['S3']['LOG_DATA'],config['IAM_ROLE']['ARN'], config['S3']['LOG_JSONPATH'])
 
 staging_songs_copy = ("""
 COPY staging_songs from '{}'
