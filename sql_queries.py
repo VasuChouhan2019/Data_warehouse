@@ -40,25 +40,18 @@ userId INT);
 """)
 
 staging_songs_table_create = ("""
-CREATE TABLE IF NOT EXISTS staging_events(
-artist VARCHAR,
-auth VARCHAR,
-firstName VARCHAR,
-gender CHAR(1),
-itemInSession INT,
-lastName VARCHAR,
-length DOUBLE PRECISION,
-level VARCHAR,
-location VARCHAR,
-method VARCHAR,
-page VARCHAR,
-registration BIGINT,
-sessionId INT,
-song VARCHAR,
-status INT,
-ts BIGINT,
-userAgent VARCHAR,
-userId INT);
+CREATE TABLE staging_songs (
+    song_id VARCHAR(255),
+    num_songs INT,
+    title VARCHAR(1024),
+    artist_name VARCHAR(4096),
+    artist_latitude DOUBLE PRECISION,
+    year int,
+    duration DOUBLE PRECISION,
+    artist_id VARCHAR(255),
+    artist_longitude DOUBLE PRECISION,
+    artist_location VARCHAR(1024)
+);
 """)
 
 songplay_table_create = ("""
