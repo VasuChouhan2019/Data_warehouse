@@ -59,7 +59,7 @@ def main():
 
     # Drop table if existed
     drop_tables(cur, conn)
-    # Create table
+    # Create table in Redshift Cluster
     create_tables(cur, conn)
 
     # Close the connection
