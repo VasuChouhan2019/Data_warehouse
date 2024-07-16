@@ -1,9 +1,8 @@
 import configparser
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
-"""
-from sql_queries, importing SQL queries contained in list and then passing those list in funtions defind below to run.
-"""
+# from sql_queries, importing SQL queries contained in list and then passing those list in funtions defind below to run.
+
 
 def drop_tables(cur, conn):
     """
@@ -17,10 +16,8 @@ def drop_tables(cur, conn):
     None
     """
     for query in drop_table_queries:
-            """
-            As the queries are stored in drop_table_queries list so we need to use for loop so that all the quesies that stored in objects in list can run one by one. 
-            """
         cur.execute(query)
+        # Execute all the queries one by one that stored in list drop_table_queries
         conn.commit()
 
 
@@ -36,34 +33,26 @@ def create_tables(cur, conn):
     None
     """
     for query in create_table_queries:
-            """
-            As the queries are stored in create_table_queries list so we need to use for loop so that all the quesies that stored in objects in list can run one by one. 
-            """
         cur.execute(query)
+        # Execute all the queries one by one that stored in list create_table_queries
         conn.commit()
 
 
 def main():
+     # Read the configuration file
     config = configparser.ConfigParser()
-    """
-    This object will be used to read from and interact with the configuration file.
-    """
     config.read('dwh.cfg')
-    """
-    This method reads the configuration file which is dwh.cfg
-    """
 
+    # Establish a connection to the database
     conn = psycopg2.connect("host={} dbname={} user={} password={} port={}".format(*config['CLUSTER'].values()))
-    """
-    This line creates a connection to a PostgreSQL database using the psycopg2.connect and using values from CLUSTER portion from dwh.cfg
-    """
     cur = conn.cursor()
-    """
-    After establishing the connection, a cursor object is created using conn.cursor(). The cursor is used to interact with the database, allowing you to execute SQL queries and fetch results.
-    """
+
+    # Drop table if existed
     drop_tables(cur, conn)
+    # Create table
     create_tables(cur, conn)
 
+    # Close the connection
     conn.close()
 
 
