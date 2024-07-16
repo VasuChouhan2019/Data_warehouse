@@ -39,6 +39,16 @@ def create_tables(cur, conn):
 
 
 def main():
+    """
+    Main function to set up the ETL process.
+
+    This function reads configuration settings, establishes a connection to the PostgreSQL
+    database, and calls functions to load staging tables and insert data into the final tables.
+
+    Returns:
+    None
+    """
+    
      # Read the configuration file
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
