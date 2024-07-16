@@ -24,7 +24,7 @@ This script contain all the queries, which include Creating table in Redshift, C
 #### 3. create_tables.py 
 This script will first connect with Redshift cluster using credentials from dwh.cfg and then create table. We also have drop table command just to be on safe side so that no errors comes up while creating those tables, if table already exist.
 
-###### 4. etl.py
+#### 4. etl.py
 This script will first connect with Redshift cluster using credentials from dwh.cfg then copy data in table we created by create_tables.py from S3 data. After that inserting same data from staging table to fact and dimesnion table.
 
 We always needs to use copy command for copying data from S3 to Redshift as it is fast. Once data is there we can use insert to have it copy in staar schema.
